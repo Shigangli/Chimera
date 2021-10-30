@@ -1,5 +1,6 @@
-# Chimera: Efficiently Training Large-Scale Neural Networks with Bidirectional Pipelines
+# Chimera
 
+Chimera is novel pipeline parallelism approach, which is proposed for efficiently training large-scale neural network models (e.g., BERT, GPT-2/3) on parallel machines (e.g., GPU clusters). The key idea of Chimera is to reduce the number of bubbles in the pipeline, **without** introducing staleness in the training process.
 Our implementations are based on PyTorch and adapted from the PipeDream (https://github.com/msr-fiddle/pipedream). We use GLOO as the distributed backend.
 
 ## Directory Structure
