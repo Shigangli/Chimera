@@ -802,7 +802,7 @@ def main():
     parser.add_argument(
         "--overwrite_cache", action="store_true", help="Overwrite the cached training and evaluation sets"
     )
-    parser.add_argument("--seed", type=int, default=12, help="random seed for initialization")
+    parser.add_argument("--seed", type=int, default=32, help="random seed for initialization")
 
     parser.add_argument(
         "--fp16",
@@ -953,6 +953,8 @@ def main():
         configuration_mapss.append({'module_to_stage_map': None, 'stage_to_rank_map': None, 'stage_to_depth_map': None})
 
 
+    # TODO: Remove the clumsy config files. 
+    #       Automatically generate the mappings according to depth, width, and number of pipelines.
     if args.config_path is not None:
         json_config_file = json.load(open(args.config_path, 'r'))
         configuration_mapss[0]['module_to_stage_map'] = json_config_file.get("module_to_stage_map", None)
