@@ -36,7 +36,7 @@ We run experiments on GPU clusters with SLURM job scheduler. For example, one ca
 
 ## Publication
 
-Chimera is pulished in SC'21. See the [paper](https://dl.acm.org/doi/abs/10.1145/3458817.3476145) for details. To cite our work:
+Chimera is pulished in SC'21, **Best Paper Finalist**. See the [paper](https://dl.acm.org/doi/abs/10.1145/3458817.3476145) for details. To cite our work:
 ```bibtex
 @inproceedings{li143,
   author = {Li, Shigang and Hoefler, Torsten},
