@@ -1,40 +1,7 @@
 
 ## Chimera: efficiently training large-scale neural networks with bidirectional pipelines
 
-Chimera is novel pipeline parallelism approach, which is proposed for efficiently training large-scale neural network models (e.g., BERT, GPT-2/3) on parallel machines (e.g., GPU clusters). The key idea of Chimera is to reduce the number of bubbles in the pipeline, **without** introducing staleness in the training process.
-Our implementations are based on PyTorch and adapted from the PipeDream (https://github.com/msr-fiddle/pipedream). We use GLOO as the distributed backend.
-
-**A concise and also fully-fledged verion of Chimera will be added** in the [Chimera-BERT branch](https://github.com/Shigangli/Chimera/tree/Chimera-BERT).
-
-## Directory Structure
-
-`chimera/chimera_bert`
-Bert in Chimera.
-
-`chimera/chimera_gpt2` 
-GPT-2 in Chimera.
-
-`chimera/chimera_pipes` 
-Chimera generalized to more than two pipelines.
-
-`chimera/performance_model`
-Performance modelling for communications.
-
-## Run the Experiments
-
-To install the required Python modules: 
-
-`conda create --name py37 python=3.7`
-
-`source activate py37`
-
-`pip install -r requirements.txt`
-
-We run experiments on GPU clusters with SLURM job scheduler. For example, one can submit a job to the job queue by
-
-`cd ./job_scripts`
-
-`sbatch daint_bert48_32nodes_chimera_4w8d.sh`
+This is a concise and also fully-fledged verion of Chimera, using BERT pre-training as a case study. We also have 1F1B and GPipe implemented. We use NCCL as the backend for Allreduces and GLOO as the backend for point-to-point communication between pipeline stages. Activation recomputation is also supported. 
 
 
 ## Publication
