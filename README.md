@@ -5,7 +5,7 @@ Chimera is novel pipeline parallelism approach, which is proposed for efficientl
 Our implementations are based on PyTorch and adapted from the PipeDream (https://github.com/msr-fiddle/pipedream). We use GLOO as the distributed backend.
 
 ```diff
-A concise and also fully-fledged verion of Chimera will be added in the Chimera-BERT branch.
+**A concise and also fully-fledged verion of Chimera will be added in the [Chimera-BERT](https://github.com/Shigangli/Chimera/tree/Chimera-BERT) branch.**
 ```
 
 ## Directory Structure
