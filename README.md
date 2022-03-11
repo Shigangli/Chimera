@@ -1,12 +1,12 @@
 
 ## Chimera: efficiently training large-scale neural networks with bidirectional pipelines
 
-This is a concise and also fully-fledged verion of Chimera, using BERT pre-training as a case study. We also have 1F1B and GPipe implemented. We use NCCL as the backend for Allreduces and GLOO as the backend for point-to-point communication between pipeline stages. Activation recomputation is also supported. 
+This is a concise and also fully-fledged verion of Chimera, using BERT pre-training as a case study. We also have 1F1B and GPipe implemented for comparison. We use NCCL as the distributed backend for Allreduces and GLOO as the distributed backend for point-to-point communication between pipeline stages. Activation recomputation is also supported. 
 
 
 ## Publication
 
-Chimera is pulished in SC'21, **Best Paper Finalist**. See the [paper](https://dl.acm.org/doi/abs/10.1145/3458817.3476145) for details. To cite our work:
+Chimera is pulished in SC'21, **Best Paper Finalist**. See the [paper](https://dl.acm.org/doi/abs/10.1145/3458817.3476145) and the [video talk](https://dl.acm.org/doi/abs/10.1145/3458817.3476145#sec-supp) for more details. To cite our work:
 ```bibtex
 @inproceedings{li143,
   author = {Li, Shigang and Hoefler, Torsten},
