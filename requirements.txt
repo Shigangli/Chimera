@@ -1,34 +1,41 @@
-# MLPerf benchmark suite requirements
-# From: https://github.com/mlperf/results/blob/master/v0.5.0/nvidia/submission/code/rnn_translator/pytorch/requirements.txt
-sacrebleu==1.2.10
-mlperf-compliance==0.0.10
-# For graphs
-graphviz
+certifi==2022.5.18.1
+charset-normalizer==2.0.12
+click==8.0.3
+cycler==0.11.0
+docker-pycreds==0.4.0
+filelock
+fonttools==4.27.1
+gitdb==4.0.9
+GitPython==3.1.20
+huggingface-hub==0.15.1
+idna==3.3
+kiwisolver==1.3.1
 matplotlib
+numpy
+packaging
+pandas
+pathtools
+Pillow
+promise
+protobuf
+psutil
+pyparsing
+python-dateutil
+pytz
+PyYAML
+regex
+requests
+scipy
 seaborn
-apex==0.1
-boto3==1.17.78
-botocore==1.20.78
-certifi==2020.12.5
-chardet==4.0.0
-idna==2.10
-ifcfg==0.21
-jmespath==0.10.0
-mkl-fft==1.3.0
-mkl-random @ file:///tmp/build/80754af9/mkl_random_1618853974840/work
-mkl-service==2.3.0
-mlperf-compliance==0.0.10
-numpy @ file:///tmp/build/80754af9/numpy_and_numpy_base_1620831194891/work
-olefile==0.46
-Pillow @ file:///tmp/build/80754af9/pillow_1617386154241/work
-python-dateutil==2.8.1
-requests==2.25.1
-s3transfer==0.4.2
-sacrebleu==1.2.10
-six @ file:///tmp/build/80754af9/six_1605205313296/work
-torch==1.6.0
-torchvision==0.7.0
-tqdm==4.60.0
-typing==3.7.4.3
-urllib3==1.26.4
-
+sentry-sdk
+setproctitle
+shortuuid
+six
+smmap
+tokenizer
+torch
+tqdm
+transformers
+typing_extensions
+urllib3
+wandb

@@ -1,64 +1,34 @@
+# PipeFisher
 
-## Chimera: efficiently training large-scale neural networks with bidirectional pipelines
+The implementation of pipeline-parallel training with Chimera in PyTorch used in [PipeFisher: Efficient Training of Large Language Models Using Pipelining and Fisher Information Matrices](https://arxiv.org/abs/2211.14133) (to appear at MLSys 2023).
 
-Chimera is novel pipeline parallelism approach, which is proposed for efficiently training large-scale neural network models (e.g., BERT, GPT-2/3) on parallel machines (e.g., GPU clusters). The key idea of Chimera is to reduce the number of bubbles in the pipeline, **without** introducing staleness in the training process.
-Our implementation (SC'21) was based on PyTorch and adapted from the PipeDream. We use GLOO as the distributed backend.
+## Setup
 
-**A new (concise and also fully-fledged) verion of Chimera will be added** in the [Chimera-BERT branch](https://github.com/Shigangli/Chimera/tree/Chimera-BERT).
+### Data preparation
+https://github.com/microsoft/AzureML-BERT/blob/master/docs/dataprep.md
 
-## Directory Structure
+Please store `wikipedia.segmented.nltk.txt` file under the `bert_data/` directory.
 
-`chimera/chimera_bert`
-Bert in Chimera.
-
-`chimera/chimera_gpt2` 
-GPT-2 in Chimera.
-
-`chimera/chimera_pipes` 
-Chimera generalized to more than two pipelines.
-
-`chimera/performance_model`
-Performance modelling for communications.
-
-## Run the Experiments
-
-To install the required Python modules: 
-
-`conda create --name py37 python=3.7`
-
-`source activate py37`
-
-`pip install -r requirements.txt`
-
-We run experiments on GPU clusters with SLURM job scheduler. For example, one can submit a job to the job queue by
-
-`cd ./job_scripts`
-
-`sbatch daint_bert48_32nodes_chimera_4w8d.sh`
-
-
-## Publication
-
-Chimera is pulished in SC'21, **Best Paper Finalist**. See the [paper](https://dl.acm.org/doi/abs/10.1145/3458817.3476145) and the [video talk](https://dl.acm.org/doi/abs/10.1145/3458817.3476145#sec-supp) for more details. To cite our work:
-```bibtex
-@inproceedings{li143,
-  author = {Li, Shigang and Hoefler, Torsten},
-  title = {Chimera: Efficiently Training Large-Scale Neural Networks with Bidirectional Pipelines},
-  year = {2021},
-  isbn = {9781450384421},
-  publisher = {Association for Computing Machinery},
-  address = {New York, NY, USA},
-  url = {https://doi.org/10.1145/3458817.3476145},
-  doi = {10.1145/3458817.3476145},
-  booktitle = {Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis},
-  articleno = {27},
-  numpages = {14},
-  location = {St. Louis, Missouri},
-  series = {SC '21}
-}
-
+### Installation
 ```
+pip install -r requirements.txt
+```
+For training, we use `apex.optimizers.FusedLAMB` of [NVIDIA's Apex library](https://github.com/NVIDIA/apex). Please follow the [instruction](https://github.com/NVIDIA/apex#installation) for installing `apex`. 
 
-## License
+For profiling, we use [NVIDIA Nsight Systems](https://developer.nvidia.com/nsight-systems). Please make sure you can execute `nsys` command.
 
-See [LICENSE](LICENSE).
+Our scripts are intended to run through the SLURM workload manager on a GPU cluster with 1 GPU per node.
+
+## Profiling
+
+### Profiling **Chimera** with 8 stages for BERT-Large on 8 GPUs 
+```
+sbatch scripts/prof_steps.sh
+```
+```
+sh scripts/plot_cuda_timeline.sh
+```
+output: `bert_prof/bert-large_chimera_8stages_8gpus_microbs32_acc1.pdf`
+
+
+By changing the settings of each script, you can run training/profiling on other BERT models, pipeline methods, number of pipeline stages, number of GPUs, etc.
